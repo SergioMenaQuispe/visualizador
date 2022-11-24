@@ -1,0 +1,27 @@
+digraph hash {
+nodesep=.05;
+rankdir=LR;
+
+node [shape=record,width=.1,height=.1];
+ 
+
+node0 [label = " | | | | | | | ",height=2.0];
+node [width = 1.5];
+node1 [label = "{ n14 | 719 | }"];
+node2 [label = "{ a1 | 805 | }"];
+node3 [label = "{ i9 | 718 | }"];
+node4 [label = "{ e5 | 989 | }"];
+node5 [label = "{ t20 | 959 | }"] ;
+node6 [label = "{ o15 | 794 | }"] ;
+node7 [label = "{ s19 | 659 | }"] ;
+
+ 
+node0:f0 -> node1:n;
+node0:f1 -> node2:n;
+node0:f2 -> node3:n;
+node0:f5 -> node4:n;
+node0:f6 -> node5:n;
+node2:p -> node6:n;
+node4:p -> node7:n;
+
+}
