@@ -1,7 +1,15 @@
-digraph g{ 
-	rankdir="LR"	6 [color=red]
-	6 -> 16
-	16 -> 9
-	10 [color=blue]
-	9 -> 10
+digraph "Doubly Linked List" {
+        rankdir=LR;
+        node [shape=record];
+        e [label="nil" shape=circle];
+        a [label="{ <ref1> | <data> 1 | <ref2>  }"]
+        b [label="{ <ref1> | <data> 5 | <ref2>  }"];
+        c [label="{ <ref1> | <data> 7 | <ref2>  }"];
+        d [label="nil" shape=circle];
+        e -> a:ref1:c      [arrowhead=dot, arrowtail=vee, dir=both, headclip=false];
+        a:ref2:c -> b:data:n [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+        b:ref2:c -> c:data:n [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+        c:ref2:c -> d      [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+        c:ref1:c -> b:data:s [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+        b:ref1:c -> a:data:s [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
 }

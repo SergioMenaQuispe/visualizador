@@ -139,7 +139,6 @@ public:
 
     // mostrar en el .dot
     void show(){
-        
         Node<T> * before;
         Node<T> * current = head;
         string output = "digraph G { \n \trankdir=\"LR\" \n \tnode [shape=record]\n";
@@ -161,11 +160,10 @@ public:
         output += "\t" + to_string(var) + ":ref:c -> null [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]" + "\n";
         output += "}";
 
-        write("input.dot",output);
-        
+        write("input.dot",output);        
     }
 
-    /*
+    
     void print(){
         Node * aux = head;
         while (aux)
@@ -174,7 +172,7 @@ public:
             aux = aux->sig;
         }
         
-    }*/
+    }
 
 };
 

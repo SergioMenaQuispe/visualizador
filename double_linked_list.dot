@@ -1,0 +1,15 @@
+digraph "Doubly Linked List" {
+	rankdir=LR; 
+	node [shape=record]; 
+	a [label="null" shape=circle];b [label="null" shape=circle];	0[label="{ <ref1> | <data> 11 | <ref2>  }"]
+	a -> 0:ref1:c      [arrowhead=dot, arrowtail=vee, dir=both, headclip=false]
+	0:ref2:c -> 1:data:n [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]
+	1[label="{ <ref1> | <data> 1 | <ref2>  }"]
+	1:ref1:c -> 0:data:s [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]
+	1:ref2:c -> 2:data:n [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]
+	2[label="{ <ref1> | <data> 90 | <ref2>  }"]
+	2:ref1:c -> 1:data:s [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]
+	2:ref2:c -> 3:data:n [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]
+	3[label="{ <ref1> | <data> 5 | <ref2>  }"]
+	3:ref1:c -> 2:data:s [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]
+	3:ref2:c -> b      [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]}
