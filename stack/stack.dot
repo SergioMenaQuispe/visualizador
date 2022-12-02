@@ -1,0 +1,14 @@
+digraph { 
+	graph [pad="0.5", nodesep="0.5", ranksep="2", splines="ortho"]; 
+	node [shape=plain] 
+	rankdir=LR; 
+	Foo [label=<
+	<table border="0" cellborder="1" cellspacing="0">	<tr><td bgcolor="red">5</td></tr>
+	<tr><td>61</td></tr>
+	<tr><td>63</td></tr>
+	<tr><td>16</td></tr>
+	<tr><td>6</td></tr>
+	<tr><td>5</td></tr>
+</table>>
+];
+}

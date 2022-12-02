@@ -1,6 +1,6 @@
 #include<iostream>
 #include<fstream>
-#include"utils.cpp"
+#include"../utils.cpp"
 using namespace std;
 
 
@@ -18,15 +18,15 @@ struct Node
 };
 
 template<class T>
-class List
+class Linked_List
 {
 private:
     Node<T> * head;
 public:
-    List(){
+    Linked_List(){
         head = 0;
     }
-    ~List(){
+    ~Linked_List(){
         Node<T> * aux;
         while (head)
         {
@@ -160,12 +160,12 @@ public:
         output += "\t" + to_string(var) + ":ref:c -> null [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]" + "\n";
         output += "}";
 
-        write("input.dot",output);        
+        write("linked_list/linked_list.dot",output);        
     }
 
     
     void print(){
-        Node * aux = head;
+        Node<T> * aux = head;
         while (aux)
         {
             cout<<aux->val<<" -> ";
@@ -178,7 +178,7 @@ public:
 
 int main()
 {
-    List<int> l;
+    Linked_List<int> l;
     l.insert_last(5);
     l.insert_last(6);
     l.insert_last(9);

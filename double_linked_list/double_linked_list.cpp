@@ -1,4 +1,4 @@
-#include"utils.cpp"
+#include"../utils.cpp"
 #include<iostream>
 using namespace std;
 
@@ -19,18 +19,18 @@ struct Node
 
 // lista
 template<class T>
-class List
+class Double_Linked_List
 {
 private:
     Node<T> * begin;
     Node<T> * last;
     int lenght;
 public:
-    List(){
+    Double_Linked_List(){
         begin = 0;
         lenght = 0;
     }
-    ~List(){
+    ~Double_Linked_List(){
         Node<T> * aux;
         while (begin)
         {
@@ -157,7 +157,7 @@ public:
         }
         
         output += "}";
-        write("double_linked_list.dot",output);        
+        write("./double_linked_list/double_linked_list.dot",output);        
     }
 
     void print(){
@@ -177,7 +177,7 @@ public:
 
 int main(){
 
-    List<int> l;
+    Double_Linked_List<int> l;
     l.insert_at(5,0);
     l.insert_at(1,0);
     l.insert_at(7,2);

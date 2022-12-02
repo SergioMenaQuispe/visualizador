@@ -1,5 +1,5 @@
 #include<iostream>
-#include"utils.cpp"
+#include"../utils.cpp"
 using namespace std;
 
 // Node
@@ -54,17 +54,6 @@ public:
         delete aux;
     }
 
-    
-    void print(){
-        Node<T> * aux = front;
-        while (aux)
-        {
-            cout<<aux->val<<" -> ";
-            aux = aux->sig;
-        }
-        
-    }
-
     T get_back(){
         return back->val;
     }
@@ -93,8 +82,20 @@ public:
 
         output += "}";
         
-        write("input.dot",output);
+        write("queque/queque.dot",output);
     }
+
+    
+    void print(){
+        Node<T> * aux = front;
+        while (aux)
+        {
+            cout<<aux->val<<" -> ";
+            aux = aux->sig;
+        }
+        
+    }
+
 
 };
 
@@ -110,7 +111,7 @@ int main(){
 
     q.remove();
     q.print();
-q.show();
+    q.show();
 
 
     return 0;

@@ -1,6 +1,6 @@
 #include<iostream>
 #include<fstream>
-#include"utils.cpp"
+#include"../utils.cpp"
 using namespace std;
 
 
@@ -84,7 +84,7 @@ public:
 
         output += "\t<tr><td>" + to_string(aux->val) + "</td></tr>\n";
         output += "</table>>\n];\n}";
-        write("input.dot",output);
+        write("stack/stack.dot",output);
         
     }
 

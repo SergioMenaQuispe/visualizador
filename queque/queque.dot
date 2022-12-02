@@ -1,0 +1,7 @@
+digraph g{ 
+	rankdir="LR"	6 [color=red]
+	6 -> 16
+	16 -> 9
+	10 [color=blue]
+	9 -> 10
+}

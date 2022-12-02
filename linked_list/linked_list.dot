@@ -1,0 +1,13 @@
+digraph G { 
+ 	rankdir="LR" 
+ 	node [shape=record]
+	0[label="{ <data> 5 | <ref>  }"]
+	0:ref:c -> 1:data [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]
+	1[label="{ <data> 6 | <ref>  }"]
+	1:ref:c -> 2:data [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]
+	2[label="{ <data> 9 | <ref>  }"]
+	2:ref:c -> 3:data [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]
+	3[label="{ <data> 19 | <ref>  }"]
+	null [shape=box]
+	3:ref:c -> null [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]
+}
