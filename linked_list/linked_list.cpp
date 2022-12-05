@@ -138,7 +138,7 @@ public:
      
 
     // mostrar en el .dot
-    void show(){
+    void show(int frame){
         Node<T> * before;
         Node<T> * current = head;
         string output = "digraph G { \n \trankdir=\"LR\" \n \tnode [shape=record]\n";
@@ -160,7 +160,7 @@ public:
         output += "\t" + to_string(var) + ":ref:c -> null [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]" + "\n";
         output += "}";
 
-        write("linked_list/linked_list.dot",output);        
+        write("linked_list/linked_list_" + to_string(frame) + ".dot",output);        
     }
 
     
@@ -179,11 +179,12 @@ public:
 int main()
 {
     Linked_List<int> l;
-    l.insert_last(5);
-    l.insert_last(6);
-    l.insert_last(9);
-    l.insert_last(19);
+    int array[] = {5,6,9,19};
 
-    l.show();
+    for(int i = 0; i < 4; i++){
+        l.insert_last(array[i]);
+        l.show(i);
+    }
+
     return 0;
 }
