@@ -1,5 +1,6 @@
 #include<iostream>
 #include<list>
+#include "utils.cpp"
 
 using namespace std;
 
@@ -35,7 +36,27 @@ class Hash
      
        
     }
+    
+     void show(){
+        typedef typename list<Obj>::iterator ITERADOR;
+        string output = "digraph Hash { \n \trankdir=\"RL\" \n \tnode [shape=record,width=.1,height=.1]\n \n node [shape=record,width=1.1,height=.1];\n";
+        char aux='A';
+
+        for (int  i = 0; i < size ; i++)
+      {
+         ITERADOR it = m_Tablal[i].begin();
+         for(;it!=m_Tablal[i].end();++it)
+         {
+            output+="\tnode"+ to_string(i)+aux+"[label =  \" Lugar de insercion : "+ to_string(i)+" \" ,width=1.5]\n ";
+            output+="node"+ to_string(i)+aux+ "->"+ to_string(*it)+"";   
+         }
+           
+      }
+      output+="\nnode [width = 1.5];}\n";
      
+        write("hash.dot",output);} 
+           
+    
 };
 
 // Estas son funciones de disperciÃ³n creadas por el usuario
@@ -60,6 +81,7 @@ class Hash
             
        } 
 
+
 int main()
 {
    Hash<int,FD2>  A;
@@ -70,4 +92,6 @@ int main()
    A.Insert("noventa",64);
    A.Insert("xxxx",774);
    A.Print();
+  A.show();
 }
+
