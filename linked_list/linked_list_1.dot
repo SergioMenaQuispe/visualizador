@@ -1,9 +1,0 @@
-digraph G { 
- 	rankdir="LR" 
- 	node [shape=record]
-	0[label="{ <data> 5 | <ref>  }"]
-	0:ref:c -> 1:data [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]
-	1[label="{ <data> 6 | <ref>  }"]
-	null [shape=box]
-	1:ref:c -> null [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]
-}

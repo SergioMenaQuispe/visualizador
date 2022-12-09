@@ -1,13 +1,36 @@
 digraph Hash { 
- 	rankdir="RL" 
+ 	rankdir="LR" 
  	node [shape=record,width=.1,height=.1]
  
  node [shape=record,width=1.1,height=.1];
-	node0A[label =  " Lugar de insercion : 0 " ,width=1.5]
- node0A->64	node1A[label =  " Lugar de insercion : 1 " ,width=1.5]
- node1A->774	node2A[label =  " Lugar de insercion : 2 " ,width=1.5]
- node2A->4	node5A[label =  " Lugar de insercion : 5 " ,width=1.5]
- node5A->34	node5A[label =  " Lugar de insercion : 5 " ,width=1.5]
- node5A->44	node10A[label =  " Lugar de insercion : 10 " ,width=1.5]
- node10A->54
+
+node11[label =11];
+
+node10[label =10];
+
+node9[label =9];
+
+node8[label =8];
+
+node7[label =7];
+
+node6[label =6];
+
+node5[label =5];
+
+node4[label =4];
+
+node3[label =3];
+
+node2[label =2];
+
+node1[label =1];
+
+node0[label =0];
+
+node0->64
+node1->774
+node2->4->5
+node5->34->44->2192
+node10->54
 node [width = 1.5];}
