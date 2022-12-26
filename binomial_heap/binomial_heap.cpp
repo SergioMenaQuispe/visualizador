@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include 
 
 using namespace std;
 
@@ -47,45 +46,6 @@ void printGraph(Node* root) {
   for (Node* child : root->children) {
     printGraph(child);
   }
-}
-
-void createGraph(Node* root, string outputFile) {
-  // Inicializa el contexto de Graphviz
-  GVC_t* gvc = gvContext();
-
-  // Crea un nuevo grafo
-  Agraph_t* graph = agopen("graph", Agdirected, 0);
-
-  // Crea una función recursiva para recorrer el árbol y crear los nodos y enlaces
-  function<void(Node*, Agnode_t*)> traverse;
-  traverse = [&](Node* node, Agnode_t* parent) {
-    // Crea un nuevo nodo en el grafo con la clave del nodo actual
-    char label[32];
-    sprintf(label, "%d", node->key);
-    Agnode_t* current = agnode(graph, label, 1);
-
-    // Si hay un nodo padre, crea un enlace entre ellos
-    if (parent != nullptr) {
-      agedge(graph, parent, current, 0, 1);
-    }
-
-    // Llama a la función recursivamente para cada hijo del nodo actual
-    for (Node* child : node->children) {
-      traverse(child, current);
-    }
-  };
-
-  // Inicia la recursión desde el nodo raíz
-  traverse(root, nullptr);
-
-  // Genera el gráfico y lo escribe a un archivo
-  gvLayout(gvc, graph, "dot");
-  gvRenderFilename(gvc, graph, "png", outputFile.c_str());
-
-  // Limpia los recursos de Graphviz
-  gvFreeLayout(gvc, graph);
-  agclose(graph);
-  gvFreeContext(gvc);
 }
 
 

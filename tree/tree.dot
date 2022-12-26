@@ -1,0 +1,6 @@
+digraph BST {
+	node [fontname="Arial"];
+	15 -> 6
+	15 -> 18
+	18 -> 17
+}
