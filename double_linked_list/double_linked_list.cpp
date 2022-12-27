@@ -103,11 +103,16 @@ public:
             delete curr;
         }
 
+        lenght -= 1;
 
     }
 
 
-    Node<T> * find(T index){
+    Node<T> * find(int index){
+
+        if(index == 0) return begin;
+        if(index == lenght-1) return last;
+
         Node<T> * curr;
 
         int i;
@@ -157,8 +162,39 @@ public:
         }
         
         output += "}";
-        write("./double_linked_list/double_linked_list.dot",output);        
+        write("double_linked_list.dot",output);        
     }
+
+    
+    void show(Node<T> * d){
+        string output = "digraph \"Doubly Linked List\" {\n\trankdir=LR; \n\tnode [shape=record]; \n\ta [label=\"null\" shape=circle];";
+
+        
+        output += "b [label=\"null\" shape=circle];";
+
+        Node<T> * aux = begin;
+
+        int iter = 0;
+        while (aux)
+        {
+            if(aux->val == d->val) output += "\t" + to_string(iter) + "[label=\"{ <ref1> | <data> " + to_string(aux->val) + " | <ref2>  }\", color=\"red\"]\n"; 
+            else output += "\t" + to_string(iter) + "[label=\"{ <ref1> | <data> " + to_string(aux->val) + " | <ref2>  }\"]\n"; 
+
+            if(!aux->ant) output += "\ta -> " + to_string(iter) + ":ref1:c      [arrowhead=dot, arrowtail=vee, dir=both, headclip=false]\n";
+            else output += "\t" + to_string(iter) + ":ref1:c -> " + to_string(iter - 1) + ":data:s [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]\n";
+
+            if(!aux->sig) output += "\t" +to_string(iter) + ":ref2:c -> " + "b      [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]";
+            else output += "\t" + to_string(iter)  + ":ref2:c -> " + to_string(iter + 1) + ":data:n [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]\n";
+
+            iter++;
+            aux = aux->sig;
+        }
+        
+        output += "}";
+        write("double_linked_list.dot",output);        
+    }
+
+ 
 
     void print(){
         Node<T> * aux = begin;
@@ -189,7 +225,8 @@ int main(){
     l.insert_at(11,0);
 
     l.print();
-    l.show();
+    l.show(l.find(0));
+    //l.show();
 
     return 0;
 }

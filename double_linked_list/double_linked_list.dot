@@ -1,7 +1,7 @@
 digraph "Doubly Linked List" {
 	rankdir=LR; 
 	node [shape=record]; 
-	a [label="null" shape=circle];b [label="null" shape=circle];	0[label="{ <ref1> | <data> 11 | <ref2>  }"]
+	a [label="null" shape=circle];b [label="null" shape=circle];	0[label="{ <ref1> | <data> 11 | <ref2>  }", color="red"]
 	a -> 0:ref1:c      [arrowhead=dot, arrowtail=vee, dir=both, headclip=false]
 	0:ref2:c -> 1:data:n [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]
 	1[label="{ <ref1> | <data> 1 | <ref2>  }"]
