@@ -137,12 +137,14 @@ public:
 
     
 
-    Node<T> * find(T d) {
+    Node<T> * find(int position) {
         Node<T> * tmp = head;
+        int it = 0;
         while (tmp)
         {
-            if(tmp->val == d) return tmp;
+            if(it == position) return tmp;
             tmp = tmp->sig;
+            it++;
         }
 
         return nullptr;
@@ -223,7 +225,7 @@ int main()
         l.insert_last(array[i]);
     }
 
-    Node<int> * a = l.find(9);
+    Node<int> * a = l.find(1);
     l.show(a);
 
     //l.show();

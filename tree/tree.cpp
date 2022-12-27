@@ -7,20 +7,16 @@ using namespace std;
 template<class T>
 class Nodo
 {
-
    public:
      T m_Dato;
      Nodo<T> * m_pSon[2];
-     bool color;
      
      Nodo(T d)
      {
         m_Dato=d;
         m_pSon[0]=0;
         m_pSon[1]=0;
-        color = 1;
-     }
-   
+     }  
 };
 
 
