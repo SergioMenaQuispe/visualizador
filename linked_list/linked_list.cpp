@@ -84,7 +84,7 @@ public:
         }
 
 
-        Node<T> * new_node = new Node(val);
+        Node<T> * new_node = new Node<T>(val);
         new_node->sig = current->sig;
         current->sig = new_node;        
     }
@@ -135,10 +135,22 @@ public:
         delete current;
     }
 
-     
+    
+
+    Node<T> * find(T d) {
+        Node<T> * tmp = head;
+        while (tmp)
+        {
+            if(tmp->val == d) return tmp;
+            tmp = tmp->sig;
+        }
+
+        return nullptr;
+        
+    }
 
     // mostrar en el .dot
-    void show(int frame){
+    void show(){
         Node<T> * before;
         Node<T> * current = head;
         string output = "digraph G { \n \trankdir=\"LR\" \n \tnode [shape=record]\n";
@@ -160,7 +172,33 @@ public:
         output += "\t" + to_string(var) + ":ref:c -> null [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]" + "\n";
         output += "}";
 
-        write("linked_list/linked_list_" + to_string(frame) + ".dot",output);        
+        write("linked_list.dot",output);        
+    }
+
+    void show(Node<T> * d){
+        Node<T> * before;
+        Node<T> * current = head;
+        string output = "digraph G { \n \trankdir=\"LR\" \n \tnode [shape=record]\n";
+        
+        int var = 0;
+        while (current)
+        {
+            before = current;
+            current = current->sig;
+
+            if(before->val == d->val) output += "\t" + to_string(var) + "[label=\"{ <data> " + to_string(before->val) +" | <ref>  }\", color=\"red\"]\n";
+            else output += "\t" + to_string(var) + "[label=\"{ <data> " + to_string(before->val) +" | <ref>  }\"]\n";
+            if(current){
+                output += "\t" + to_string(var) + ":ref:c -> " + to_string(var + 1) + ":data [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]" + "\n";
+                ++var;
+            }
+        }
+
+        output += "\tnull [shape=box]\n";
+        output += "\t" + to_string(var) + ":ref:c -> null [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false]" + "\n";
+        output += "}";
+
+        write("linked_list.dot",output);        
     }
 
     
@@ -183,8 +221,11 @@ int main()
 
     for(int i = 0; i < 4; i++){
         l.insert_last(array[i]);
-        l.show(i);
     }
 
+    Node<int> * a = l.find(9);
+    l.show(a);
+
+    //l.show();
     return 0;
 }
