@@ -63,10 +63,17 @@ public:
     }
 
     void show(){
+
+        if(!front) return;
+
         string output = "digraph g{ \n\trankdir=\"LR\"";
 
         Node<T> * current = front;
         Node<T> * before;
+
+        if(current == back) 
+            output += "\t" + to_string(current->val) + "\n";
+
         while (current->sig)
         {
 
@@ -82,7 +89,7 @@ public:
 
         output += "}";
         
-        write("queque/queque.dot",output);
+        write("queque.dot",output);
     }
 
     
@@ -104,12 +111,7 @@ int main(){
 
     Queque<int> q;
     q.insert(5);
-    q.insert(6);
-    q.insert(16);
-    q.insert(9);
-    q.insert(10);
-
-    q.remove();
+    q.insert(3);
     q.print();
     q.show();
 
