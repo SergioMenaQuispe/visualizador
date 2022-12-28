@@ -210,43 +210,31 @@ class Tree
          }
       }
 
-      T    Max(Nodo<T> * p){
+      Nodo<T> *    Max(Nodo<T> * p){
          
-         if (p == NULL)
-            return 0;
-
-         T res = p->m_Dato;
-         T lres = Max(p->m_pSon[0]);
-         T rres = Max(p->m_pSon[1]);
-         if (lres > res)
-            res = lres;
-         if (rres > res)
-            res = rres;
-            
-         return res;
+         while (p->m_pSon[1])
+         {
+            p = p->m_pSon[1];
+         }
+         
+         return p;
       }
 
-      T Max(){
+      Nodo<T> * Max(){
          return Max(m_pRoot);
       }
 
-      T    Min(Nodo<T> * p){
+      Nodo<T> *    Min(Nodo<T> * p){
          
-         if (p == NULL)
-            return 0;
-      
-         T res = p->m_Dato;
-         T rres = Min(p->m_pSon[1]);
-         T lres = Min(p->m_pSon[0]);
-         if (rres < res)
-            res = rres;
-         if (lres < res)
-            res = lres;
-            
-         return res;
+         while (p->m_pSon[0])
+         {
+            p = p->m_pSon[0];
+         }
+         
+         return p;
       }
 
-      T Min(){
+      Nodo<T> * Min(){
          return Min(m_pRoot);
       }
 
@@ -285,15 +273,15 @@ class Tree
          output += "\n}";
          write("tree.dot",output);
     }
+
       
 };      
       
 int main()
 {
    Tree<int> A;
-   A<<15<<6<<18;
+   A<<15<<6<<18<<30<<11<<3;
    A.Print_Iterativo();
-
-   A.show();
+   A.show(A.Max());
 };
 
