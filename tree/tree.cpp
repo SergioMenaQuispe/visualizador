@@ -249,6 +249,9 @@ class Tree
 
     void generate_output(Nodo<T> * r, string & s){
          if(!r) return;
+         
+         s += "\n\t" + to_string(r->m_Dato) + "\n";
+
          if(r->m_pSon[0]){
             Nodo<T> * aux = r->m_pSon[0];
             s += "\n\t" + to_string(r->m_Dato) + " -> " + to_string(aux->m_Dato) + "[label=\"0\"]";
@@ -284,11 +287,9 @@ class Tree
 int main()
 {
    Tree<int> A;
-   A<<15<<6<<18<<17;
+   A<<15<<19;
    A.Print_Iterativo();
-   cout<<A.Max()<<endl;
-   cout<<A.Min()<<endl;
 
-   A.show(A.find(18));
+   A.show();
 };
 
