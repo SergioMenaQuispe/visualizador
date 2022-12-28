@@ -145,15 +145,14 @@ class Tree
          return find_r(d,m_pRoot);
       }
 
-      bool find(T d){
+      Nodo<T> * find(T d){
         Nodo<T> * pTmp = m_pRoot;
-        if(!pTmp) {return false;}
+        if(!pTmp) {return nullptr;}
         while(pTmp){
-         if(pTmp->m_Dato == d) {return true;}
-           pTmp = pTmp->m_pSon[pTmp->m_Dato < d];
+         if(pTmp->m_Dato == d) {return pTmp;}
+         pTmp = pTmp->m_pSon[pTmp->m_Dato < d];
         }
-
-         return false;
+         return nullptr;
       }
 
    
@@ -252,13 +251,13 @@ class Tree
          if(!r) return;
          if(r->m_pSon[0]){
             Nodo<T> * aux = r->m_pSon[0];
-            s += "\n\t" + to_string(r->m_Dato) + " -> " + to_string(aux->m_Dato);
+            s += "\n\t" + to_string(r->m_Dato) + " -> " + to_string(aux->m_Dato) + "[label=\"0\"]";
             generate_output(r->m_pSon[0], s);
          }
 
          if(r->m_pSon[1]){
             Nodo<T> * aux = r->m_pSon[1];
-            s += "\n\t" + to_string(r->m_Dato) + " -> " + to_string(aux->m_Dato);
+            s += "\n\t" + to_string(r->m_Dato) + " -> " + to_string(aux->m_Dato) + "[label=\"1\"]";
             generate_output(r->m_pSon[1], s);
          }
     }
@@ -270,6 +269,15 @@ class Tree
          output += "\n}";
          write("tree.dot",output);
     }        
+
+    void show(Nodo<T> * d){
+         string output = "digraph BST {\n\tnode [fontname=\"Arial\"];";
+         Nodo<T> * aux = m_pRoot;
+         generate_output(m_pRoot,output);
+         output += "\n\t" + to_string(d->m_Dato) + "[color=red]\n";
+         output += "\n}";
+         write("tree.dot",output);
+    }
       
 };      
       
@@ -281,6 +289,6 @@ int main()
    cout<<A.Max()<<endl;
    cout<<A.Min()<<endl;
 
-   A.show();
+   A.show(A.find(18));
 };
 
