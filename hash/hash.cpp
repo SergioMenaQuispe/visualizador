@@ -36,6 +36,22 @@ class Hash
      
        
     }
+
+    // encontrar
+      int find(string key){
+         int pos = fd(key, size);
+         return pos;
+      }
+
+      // delete 
+      void delete_key(string key){
+         int pos = fd(key, size);
+         while (m_Tablal[pos].size() != 0)
+         {
+            m_Tablal[pos].pop_back();
+         }
+      }
+
     
      void show(){
         typedef typename list<Obj>::iterator ITERADOR;
@@ -56,16 +72,44 @@ class Hash
                     output+="->"+to_string(*it);
                 }
                     
-               }
-               
-               
-               
-           
+               }               
             }
         
          output+="\nnode [width = 1.5];}\n";
      
-         write("hash.dot",output);} 
+         write("hash.dot",output);
+      } 
+
+      
+     void show(int pos){
+        typedef typename list<Obj>::iterator ITERADOR;
+        string output = "digraph Hash { \n \trankdir=\"LR\" \n \tnode [shape=record,width=.1,height=.1]\n \n node [shape=record,width=1.1,height=.1];\n";
+        
+         for (int i = size; i >= 0; i--)
+            {
+               if(i == pos)
+                   output+="\nnode"+ to_string(i)+"[label ="+to_string(i)+", color=\"red\"];\n";
+               else
+                output+="\nnode"+ to_string(i)+"[label ="+to_string(i)+"];\n";
+            }
+         for (int  j = 0; j < size ; j++)
+            {
+               ITERADOR it = m_Tablal[j].begin();
+               if(*it!=NULL)
+               {
+                output+="\nnode"+ to_string(j);
+                for(;it!=m_Tablal[j].end();++it)
+                {
+                    output+="->"+to_string(*it);
+                }
+                    
+               }               
+            }
+        
+         output+="\nnode [width = 1.5];}\n";
+     
+         write("hash.dot",output);
+      } 
            
     
 };
@@ -105,6 +149,7 @@ int main()
    A.Insert("cuatro",5);
    A.Insert("nueve", 2192);
    A.Print();
+   A.delete_key("cuatro");
    A.show();
   
 }
