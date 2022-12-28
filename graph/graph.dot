@@ -1,0 +1,6 @@
+graph A {
+A
+	A -- B;
+B
+D
+}
