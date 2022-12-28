@@ -1,3 +1,5 @@
+#ifndef UTILS
+#define UTILS
 #include<iostream>
 #include<fstream>
 using namespace std;
@@ -18,13 +20,13 @@ string read(string name){
     }
 
     file.close();
-    return text;   
+    return text;
 }
 
 void write(string name, string text){
     ofstream file;
     file.open(name, fstream::out);
-    
+
     if(!file.is_open()) {
         cout<<"Error al abrir el file";
         return;
@@ -33,3 +35,5 @@ void write(string name, string text){
     file << text;
     file.close();
 }
+
+#endif

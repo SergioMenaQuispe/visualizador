@@ -1,5 +1,0 @@
-digraph g{ 
-	rankdir="LR"	5 [color=red]
-	3 [color=blue]
-	5 -> 3
-}
