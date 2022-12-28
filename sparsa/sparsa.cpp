@@ -257,13 +257,8 @@ class Matrix
 				for(int j = 0; j < col_size; j++){
 					if(find_col(i, j, p)){
 						output += "\tN" + to_string(j) + "_L" + to_string(i)  + "[label = \"" + to_string((*p)->m_Data) + "\" width = 1.5, group = " + to_string(j + 2) + " ];\n";
-						n_col++;
-
-						rows.insert(i);
 					}
 				}
-				if(n_col) frequency.push_back(n_col);
-				n_col = 0;
 			}
 
 
@@ -305,6 +300,7 @@ class Matrix
 				}
 			}
 			
+			output += "\n}";
 			write("./a.dot",output);
         }
 

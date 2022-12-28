@@ -1,7 +1,8 @@
 digraph Sparce_Matrix { 
-	node [shape=box]
-	Mt[ label = "Matrix", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];	
-	U0 [label = "0" width = 1.5 style = filled, fillcolor = bisque1, group = 1 ];
+	snode [shape=box]
+	Mt[ label = "Matrix", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];
+	e0[ shape = point, width = 0 ];
+	e1[ shape = point, width = 0 ];	U0 [label = "0" width = 1.5 style = filled, fillcolor = bisque1, group = 1 ];
 	U1 [label = "1" width = 1.5 style = filled, fillcolor = bisque1, group = 1 ];
 	U2 [label = "2" width = 1.5 style = filled, fillcolor = bisque1, group = 1 ];
 	U3 [label = "3" width = 1.5 style = filled, fillcolor = bisque1, group = 1 ];
@@ -43,8 +44,6 @@ digraph Sparce_Matrix {
 	Mt -> U0;
 	Mt -> A0;
 	{ rank = same; Mt;A0; A1; A2; A3; A4; A5; A6; }
-
-
 	N1_L1[label = "3" width = 1.5, group = 3 ];
 	N2_L3[label = "5" width = 1.5, group = 4 ];
 	N6_L3[label = "2" width = 1.5, group = 8 ];
@@ -54,44 +53,25 @@ digraph Sparce_Matrix {
 	N4_L5[label = "3" width = 1.5, group = 6 ];
 	N5_L5[label = "4" width = 1.5, group = 7 ];
 	N6_L5[label = "7" width = 1.5, group = 8 ];
-
 	A1 -> N1_L1
 	U1 -> N1_L1
-
-	
-	
-	e0[ shape = point, width = 0 ];
-	e1[ shape = point, width = 0 ];
-	A2 -> e0 -> e1[dir = none]
-	e1 ->  N2_L3
-
-	//A2 -> N2_L3
+	A2 -> N2_L3
 	U3 -> N2_L3
-
-	
 	A6 -> N6_L3
-
-
 	N6_L3 -> N2_L3
 	N2_L3 -> N6_L3
-
-
 	N1_L4 -> N1_L1
 	N1_L1 -> N1_L4
-
 	U4 -> N1_L4
 	N2_L4 -> N2_L3
 	N2_L3 -> N2_L4
 	N2_L4 -> N1_L4
 	N1_L4 -> N2_L4
-
 	A5 -> N5_L4
 	N5_L4 -> N2_L4
 	N2_L4 -> N5_L4
-
 	A4 -> N4_L5
 	U5 -> N4_L5
-
 	N5_L5 -> N5_L4
 	N5_L4 -> N5_L5
 	N5_L5 -> N4_L5
@@ -100,10 +80,5 @@ digraph Sparce_Matrix {
 	N6_L3 -> N6_L5
 	N6_L5 -> N5_L5
 	N5_L5 -> N6_L5
-
-	{ rank=same; U1; N1_L1};
-	{ rank=same; U4; N1_L4; N2_L4; N5_L4};
-	{ rank=same; U5; N4_L5; N5_L5; N6_L5};
-
 
 }
