@@ -36,6 +36,10 @@ class Tree
         }
         Add_r(d,p->m_pSon[p->m_Dato < d]);
       }
+
+      void Add_r(T d){
+         Add_r(d, m_pRoot);
+      }
       
       Tree<T> & operator<<(T d)
       {
@@ -287,7 +291,7 @@ class Tree
 int main()
 {
    Tree<int> A;
-   A<<15<<19;
+   A<<15<<6<<18;
    A.Print_Iterativo();
 
    A.show();
